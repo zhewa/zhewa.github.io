@@ -19,6 +19,9 @@
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3",
-    "nan": "^2.13.2"
+    "hexo-symbols-count-time": "^0.4.4",
+    "hexo-toc": "^1.1.0",
+    "nan": "^2.13.2",
+    "sharp": "^0.22.1"
   }
 }

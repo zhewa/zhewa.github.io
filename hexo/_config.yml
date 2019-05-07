@@ -83,3 +83,11 @@ deploy:
   repo: https://github.com/zhewa/zhewa.github.io
   branch: master
   message:
+
+# word count
+## https://github.com/theme-next/hexo-symbols-count-time
+symbols_count_time:
+  symbols: false
+  time: false
+  total_symbols: true
+  total_time: false

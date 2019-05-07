@@ -1,15 +1,17 @@
 ---
 title: The Ethical Issue of Pre-Publication Single Blind Peer Review
 date: 2019-04-22 20:26:47
-tags: Ethics
+tags:
+- Ethics
 ---
+{% asset_img "PeerReview1.jpeg" "" %}<!-- more -->
+Cartoon source: http://www.entrelibros.co/app/webroot/blog/wp-content/uploads/2016/11/PeerReview3.jpeg
 
 Peer review is the bedrock of modern scientific publication. A scientific investigation is not fit for publication unless a group of experts signals the go-ahead. In the middle of the 17th century, Henry Oldenburg, the editor of Philosophical Transactions at the Royal Society of London, pioneered the practice that a submitted paper be "first reviewed by some members" of the society, and this is the first record of an editorial pre-publication peer review[^1][^2]. The practice was not popular in scientific publishing until the middle of the 20th century[^1]. Today, pre-publication peer review has become a critical part of the publication process. Only after peer review can a work be considered part of the scientific literature, and only peer-reviewed publication will be recognized during job hiring and evaluation. Each year, more than 1.3 million papers are published in peer reviewed journals[^3]. There are generally three types of pre-publication peer review:
 
 - Single blind review. Reviewers know the identity of the authors but the authors do not know who the reviewers are.
 - Double blind review. Both the reviewers and the authors are anonymous.
 - Open review. Both the reviewers and the authors are known to each other.
-<!-- more -->
 
 Single blind review is prevalent in today's pre-publication peer review. Most biomedical journals, including Nature, Cell, Science and most Wiley or Elsevier archived journals, support single blind review. A 2015 survey by Publishing Research Consortium further confirmed this by reporting that 84% of respondents had experienced single blind review[^4]. However, scientific journals should reduce the use of single blind review and encourage the use of alternative peer review methods because single blind review is more susceptible to bias, discrimination, and conflicts of interest.
 
