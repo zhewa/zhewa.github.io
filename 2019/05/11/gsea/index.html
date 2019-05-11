@@ -94,18 +94,20 @@
 
 
 
-  <meta name="keywords" content="scRNA-seq,pipeline,UMI,CEL-Seq">
+  <meta name="keywords" content="GSEA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scruff, a new R&#x2F;Bioconductor package for preprocessing scRNA-seq data">
-<meta property="og:url" content="https://zhewa.github.io/2019/05/05/scruff/index.html">
+<meta property="og:title" content="Gene Set Enrichment Analysis (GSEA) and How It Works">
+<meta property="og:url" content="https://zhewa.github.io/2019/05/11/gsea/index.html">
 <meta property="og:site_name" content="singlecell.me">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/zhewa/zhewa.github.io/source/hexo/source/_posts/scruff/scruff_figure1.png">
-<meta property="og:updated_time" content="2019-05-07T02:12:32.788Z">
+<meta property="og:image" content="https://zhewa.github.io/2019/05/11/gsea/F1.large.jpg">
+<meta property="og:updated_time" content="2019-05-11T19:41:32.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="scruff, a new R&#x2F;Bioconductor package for preprocessing scRNA-seq data">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/zhewa/zhewa.github.io/source/hexo/source/_posts/scruff/scruff_figure1.png">
+<meta name="twitter:title" content="Gene Set Enrichment Analysis (GSEA) and How It Works">
+<meta name="twitter:image" content="https://zhewa.github.io/2019/05/11/gsea/F1.large.jpg">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="singlecell.me" type="application/atom+xml">
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://zhewa.github.io/2019/05/05/scruff/">
+  <link rel="canonical" href="https://zhewa.github.io/2019/05/11/gsea/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>scruff, a new R/Bioconductor package for preprocessing scRNA-seq data | singlecell.me</title>
+  <title>Gene Set Enrichment Analysis (GSEA) and How It Works | singlecell.me</title>
   
 
 
@@ -311,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhewa.github.io/2019/05/05/scruff/">
+    <link itemprop="mainEntityOfPage" href="https://zhewa.github.io/2019/05/11/gsea/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhe Wang">
@@ -328,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">scruff, a new R/Bioconductor package for preprocessing scRNA-seq data
+          <h1 class="post-title" itemprop="name headline">Gene Set Enrichment Analysis (GSEA) and How It Works
 
               
             
@@ -354,24 +356,12 @@
                 
               
 
-              <time title="Created: 2019-05-05 12:13:45" itemprop="dateCreated datePublished" datetime="2019-05-05T12:13:45-04:00">2019-05-05</time>
+              <time title="Created: 2019-05-11 09:44:42 / Modified: 15:41:32" itemprop="dateCreated datePublished" datetime="2019-05-11T09:44:42-04:00">2019-05-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-06 22:12:32" itemprop="dateModified" datetime="2019-05-06T22:12:32-04:00">2019-05-06</time>
               
             
           </span>
@@ -389,8 +379,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/05/scruff/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/05/scruff/" itemprop="commentCount"></span>
+                <a href="/2019/05/11/gsea/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/11/gsea/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,7 +388,7 @@
 
           
           
-            <span id="/2019/05/05/scruff/" class="leancloud_visitors" data-flag-title="scruff, a new R/Bioconductor package for preprocessing scRNA-seq data">
+            <span id="/2019/05/11/gsea/" class="leancloud_visitors" data-flag-title="Gene Set Enrichment Analysis (GSEA) and How It Works">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -429,9 +419,27 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><img src="https://raw.githubusercontent.com/zhewa/zhewa.github.io/source/hexo/source/_posts/scruff/scruff_figure1.png" width="500"><a id="more"></a>
-<p><a href="https://doi.org/10.1186/s12859-019-2797-2" target="_blank" rel="noopener">scruff</a>, a new <a href="http://bioconductor.org/packages/scruff/" target="_blank" rel="noopener">R/Bioconductor</a> package published on <a href="https://bmcbioinformatics.biomedcentral.com/" target="_blank" rel="noopener">BMC Bioinformatics</a>, provides a whole new experience in scRNA-seq data preprocessing. For details, visit <a href="https://doi.org/10.1186/s12859-019-2797-2" target="_blank" rel="noopener">https://doi.org/10.1186/s12859-019-2797-2</a>.</p>
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><img src="/2019/05/11/gsea/F1.large.jpg"><a id="more"></a>
+<p><span class="image-caption">Figure 1 from Subramanian A, et al. 2005</span><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="Subramanian A, Tamayo P, Mootha VK, Mukherjee S, Ebert BL, Gillette MA, et al. Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proceedings of the National Academy of Sciences of the United States of America. 2005;102(43):15545-50.
+">[1]</span></a></sup> </p>
+<p>Given a ranked gene list $L$ containing $N$ genes, ordered according to their differential expression between the classes. Given an <em>a priori</em> defined set of genes $S$ (e.g., genes sharing the same GO category) containing $N_s$ genes, the goal of GSEA is to determine whether the members of $S$ are randomly distributed throughout $L$ or primarily found at the top or bottom<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="Subramanian A, Tamayo P, Mootha VK, Mukherjee S, Ebert BL, Gillette MA, et al. Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proceedings of the National Academy of Sciences of the United States of America. 2005;102(43):15545-50.
+">[1]</span></a></sup>. We expect the latter if the gene set is related to the phenotypic distinction between the classes. In short, <strong>GSEA determines if a set of genes is differentially expressed between two conditions</strong>.</p>
+<h1><span id="step-1-calculation-of-an-enrichment-score">Step 1: Calculation of an Enrichment Score.</span></h1><h2><span id="running-sum-statistic">Running-sum statistic</span></h2><p>The enrichment score (ES) is calculated by walking down the list $L$, increasing a running-sum statistic when we encounter a gene in $S$ and decreasing it when we encounter genes not in $S$. The increment or decrement of a gene $X_i$ is calculated based on the following:</p>
+<script type="math/tex; mode=display">\begin{equation}
+X_i=\begin{cases}
+\frac{\left|r_i\right|^p}{\sum_{i \in S}^{} \left|r_i\right|^p},  & i \in S \\[2ex]
+-\frac{1}{N - N_s}, & i \notin S
+\end{cases}\end{equation}\label{eq1}</script><p>where $r_i$ is the correlation of the gene $i$ with the phenotype. This is the signal-to-noise ratio if using default GSEA ranking metric for input data matrix with gene expression values. If a pre-ranked gene list is provided, the values in the pre-ranked list is used instead. $p$ is the enrichment weighting exponent. Subramanian A, et al. found that $p = 1$ (weighting by the correlation) is a very reasonable choice that allows significant gene sets with less than perfect coherence, i.e., only a subset of genes in the set are coordinately expressed, to score well. If one is interested in penalizing sets for lack of coherence or to discover sets with any type of nonrandom distribution of tags, a value $p &lt; 1$ might be appropriate. On the other hand, if one uses sets with large number of genes and only a small subset of those is expected to be coherent, then one could consider using $p &gt; 1$. If $p=0$, the enrichment score (ES) is a standard Kolmogorov-Smirnov statistic.</p>
+<p>The running-sum statistic $D_g$ up to $n$th gene $g$ is calculated by taking the sum of $X$ from all genes in $L$ including and before $g$:</p>
+<script type="math/tex; mode=display">\begin{equation}
+D_g = \sum_{i=0}^{n}{X_i}
+\end{equation}\label{eq2}</script><h2><span id="enrichment-score">Enrichment score</span></h2><p>After calculating the running-sum statistics for all genes in $L$, ES is the maximum deviation from zero encountered in this random walk. It corresponds to a weighted Kolmogorov-Smirnov-like statistic.</p>
+<script type="math/tex; mode=display">\begin{equation}
+\text{ES}=\begin{cases}
+\sup_i \sum{X_i},  & X_i \geqslant 0 \\[2ex]
+\inf_i \sum{X_i},  & X_i < 0
+\end{cases}
+\end{equation}\label{eq3}</script><h1><span id="step-2-estimation-of-significance-level-of-es">Step 2: Estimation of Significance Level of ES.</span></h1><h1><span id="step-3-adjustment-for-multiple-hypothesis-testing">Step 3: Adjustment for Multiple Hypothesis Testing.</span></h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">Subramanian A, Tamayo P, Mootha VK, Mukherjee S, Ebert BL, Gillette MA, et al. Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proceedings of the National Academy of Sciences of the United States of America. 2005;102(43):15545-50.<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
       
     </div>
 
@@ -465,7 +473,7 @@
   <li class="post-copyright-link">
     <strong>Post link: </strong>
     
-    <a href="https://zhewa.github.io/2019/05/05/scruff/" title="scruff, a new R/Bioconductor package for preprocessing scRNA-seq data">https://zhewa.github.io/2019/05/05/scruff/</a>
+    <a href="https://zhewa.github.io/2019/05/11/gsea/" title="Gene Set Enrichment Analysis (GSEA) and How It Works">https://zhewa.github.io/2019/05/11/gsea/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -478,13 +486,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/scRNA-seq/" rel="tag"># scRNA-seq</a>
-          
-            <a href="/tags/pipeline/" rel="tag"># pipeline</a>
-          
-            <a href="/tags/UMI/" rel="tag"># UMI</a>
-          
-            <a href="/tags/CEL-Seq/" rel="tag"># CEL-Seq</a>
+            <a href="/tags/GSEA/" rel="tag"># GSEA</a>
           
         </div>
       
@@ -497,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/01/processCellRangerOutputs/" rel="next" title="An R script to process Cell Ranger output files">
-                <i class="fa fa-chevron-left"></i> An R script to process Cell Ranger output files
+              <a href="/2019/05/05/scruff/" rel="next" title="scruff, a new R/Bioconductor package for preprocessing scRNA-seq data">
+                <i class="fa fa-chevron-left"></i> scruff, a new R/Bioconductor package for preprocessing scRNA-seq data
               </a>
             
           </div>
@@ -506,10 +508,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/11/gsea/" rel="prev" title="Gene Set Enrichment Analysis (GSEA) and How It Works">
-                Gene Set Enrichment Analysis (GSEA) and How It Works <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -560,8 +558,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -655,6 +662,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-text">Step 1: Calculation of an Enrichment Score.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">Running-sum statistic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-text">Enrichment score</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-text">Step 2: Estimation of Significance Level of ES.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-text">Step 3: Adjustment for Multiple Hypothesis Testing.</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -843,9 +867,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "https://zhewa.github.io/2019/05/05/scruff/";
-    this.page.identifier = "2019/05/05/scruff/";
-    this.page.title = 'scruff, a new R/Bioconductor package for preprocessing scRNA-seq data';
+    this.page.url = "https://zhewa.github.io/2019/05/11/gsea/";
+    this.page.identifier = "2019/05/11/gsea/";
+    this.page.title = 'Gene Set Enrichment Analysis (GSEA) and How It Works';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
@@ -951,7 +975,56 @@
           
         });
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -970,16 +1043,7 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-
-  
-
-  
-  
-
-  
-  
-
+    
   
 
 
