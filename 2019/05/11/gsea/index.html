@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="singlecell.me">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhewa.github.io/2019/05/11/gsea/F1.large.jpg">
-<meta property="og:updated_time" content="2019-05-11T19:41:32.262Z">
+<meta property="og:updated_time" content="2019-05-18T01:40:24.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gene Set Enrichment Analysis (GSEA) and How It Works">
 <meta name="twitter:image" content="https://zhewa.github.io/2019/05/11/gsea/F1.large.jpg">
@@ -356,12 +356,24 @@
                 
               
 
-              <time title="Created: 2019-05-11 09:44:42 / Modified: 15:41:32" itemprop="dateCreated datePublished" datetime="2019-05-11T09:44:42-04:00">2019-05-11</time>
+              <time title="Created: 2019-05-11 09:44:42" itemprop="dateCreated datePublished" datetime="2019-05-11T09:44:42-04:00">2019-05-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-17 21:40:24" itemprop="dateModified" datetime="2019-05-17T21:40:24-04:00">2019-05-17</time>
               
             
           </span>
@@ -429,16 +441,19 @@
 X_i=\begin{cases}
 \frac{\left|r_i\right|^p}{\sum_{i \in S}^{} \left|r_i\right|^p},  & i \in S \\[2ex]
 -\frac{1}{N - N_s}, & i \notin S
-\end{cases}\end{equation}\label{eq1}</script><p>where $r_i$ is the correlation of the gene $i$ with the phenotype. This is the signal-to-noise ratio if using default GSEA ranking metric for input data matrix with gene expression values. If a pre-ranked gene list is provided, the values in the pre-ranked list is used instead. $p$ is the enrichment weighting exponent. Subramanian A, et al. found that $p = 1$ (weighting by the correlation) is a very reasonable choice that allows significant gene sets with less than perfect coherence, i.e., only a subset of genes in the set are coordinately expressed, to score well. If one is interested in penalizing sets for lack of coherence or to discover sets with any type of nonrandom distribution of tags, a value $p &lt; 1$ might be appropriate. On the other hand, if one uses sets with large number of genes and only a small subset of those is expected to be coherent, then one could consider using $p &gt; 1$. If $p=0$, the enrichment score (ES) is a standard Kolmogorov-Smirnov statistic.</p>
+\end{cases}\end{equation}\label{eq1}</script><p>where $r_i$ is the correlation of the gene $i$ with the phenotype. This is the signal-to-noise ratio if using default GSEA ranking metric for input data matrix with gene expression values. If a pre-ranked gene list is provided, the values in the pre-ranked list is used instead. $p$ is the enrichment weighting exponent. Subramanian A, et al. found that $p = 1$ (weighting by the correlation) is a very reasonable choice that allows significant gene sets with less than perfect coherence, i.e., only a subset of genes in the set are coordinately expressed, to score well. If one is interested in penalizing sets for lack of coherence or to discover sets with any type of nonrandom distribution of tags, a value $p &lt; 1$ might be appropriate. On the other hand, if one uses sets with large number of genes and only a small subset of those is expected to be coherent, then one could consider using $p &gt; 1$. If $p=0$, the ES is a standard Kolmogorov-Smirnov statistic.</p>
+<p>Here we can see only the increments are proportional to the correlation of the gene $r_i$ whereas decrements are not. There are three implications from this:</p>
+<ul>
+<li>If a pre-ranked gene list is provided, the increments (and accordingly the ES) of the gene list for each gene set depends on the correlation value associated with each gene. <strong>In short, ES depends on how the genes are ranked.</strong> For example, the ES will be different if log<sub>2</sub> fold-change values are provided instead of fold-change values.</li>
+<li>The top and bottom genes in the gene list will have a greater weight and contribute more to the increments of ES compared to genes in the middle.</li>
+<li>The random walk starts at 0 but might not get back to 0 at the end of the gene list.</li>
+</ul>
 <p>The running-sum statistic $D_g$ up to $n$th gene $g$ is calculated by taking the sum of $X$ from all genes in $L$ including and before $g$:</p>
 <script type="math/tex; mode=display">\begin{equation}
 D_g = \sum_{i=0}^{n}{X_i}
 \end{equation}\label{eq2}</script><h2><span id="enrichment-score">Enrichment score</span></h2><p>After calculating the running-sum statistics for all genes in $L$, ES is the maximum deviation from zero encountered in this random walk. It corresponds to a weighted Kolmogorov-Smirnov-like statistic.</p>
 <script type="math/tex; mode=display">\begin{equation}
-\text{ES}=\begin{cases}
-\sup_i \sum{X_i},  & X_i \geqslant 0 \\[2ex]
-\inf_i \sum{X_i},  & X_i < 0
-\end{cases}
+\text{ES}=\max \left|D_g\right|
 \end{equation}\label{eq3}</script><h1><span id="step-2-estimation-of-significance-level-of-es">Step 2: Estimation of Significance Level of ES.</span></h1><h1><span id="step-3-adjustment-for-multiple-hypothesis-testing">Step 3: Adjustment for Multiple Hypothesis Testing.</span></h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">Subramanian A, Tamayo P, Mootha VK, Mukherjee S, Ebert BL, Gillette MA, et al. Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proceedings of the National Academy of Sciences of the United States of America. 2005;102(43):15545-50.<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
       
     </div>
@@ -706,7 +721,7 @@ D_g = \sum_{i=0}^{n}{X_i}
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">22k</span>
+    <span title="Symbols count total">23k</span>
   
 
   
