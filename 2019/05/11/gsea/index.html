@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="singlecell.me">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://zhewa.github.io/2019/05/11/gsea/F1.large.jpg">
-<meta property="og:updated_time" content="2019-05-18T01:40:24.987Z">
+<meta property="og:updated_time" content="2019-05-18T01:44:38.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gene Set Enrichment Analysis (GSEA) and How It Works">
 <meta name="twitter:image" content="https://zhewa.github.io/2019/05/11/gsea/F1.large.jpg">
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-17 21:40:24" itemprop="dateModified" datetime="2019-05-17T21:40:24-04:00">2019-05-17</time>
+                <time title="Modified: 2019-05-17 21:44:38" itemprop="dateModified" datetime="2019-05-17T21:44:38-04:00">2019-05-17</time>
               
             
           </span>
@@ -444,7 +444,7 @@ X_i=\begin{cases}
 \end{cases}\end{equation}\label{eq1}</script><p>where $r_i$ is the correlation of the gene $i$ with the phenotype. This is the signal-to-noise ratio if using default GSEA ranking metric for input data matrix with gene expression values. If a pre-ranked gene list is provided, the values in the pre-ranked list is used instead. $p$ is the enrichment weighting exponent. Subramanian A, et al. found that $p = 1$ (weighting by the correlation) is a very reasonable choice that allows significant gene sets with less than perfect coherence, i.e., only a subset of genes in the set are coordinately expressed, to score well. If one is interested in penalizing sets for lack of coherence or to discover sets with any type of nonrandom distribution of tags, a value $p &lt; 1$ might be appropriate. On the other hand, if one uses sets with large number of genes and only a small subset of those is expected to be coherent, then one could consider using $p &gt; 1$. If $p=0$, the ES is a standard Kolmogorov-Smirnov statistic.</p>
 <p>Here we can see only the increments are proportional to the correlation of the gene $r_i$ whereas decrements are not. There are three implications from this:</p>
 <ul>
-<li>If a pre-ranked gene list is provided, the increments (and accordingly the ES) of the gene list for each gene set depends on the correlation value associated with each gene. <strong>In short, ES depends on how the genes are ranked.</strong> For example, the ES will be different if log<sub>2</sub> fold-change values are provided instead of fold-change values.</li>
+<li>If a pre-ranked gene list is provided, the increments (and accordingly the ES) of the gene list for each gene set depends on the correlation value associated with each gene. <strong>In short, ES depends on how the genes are ranked.</strong> For example, the ES will be different for the same ranked gene list if log<sub>2</sub> fold-change values are provided instead of fold-change values.</li>
 <li>The top and bottom genes in the gene list will have a greater weight and contribute more to the increments of ES compared to genes in the middle.</li>
 <li>The random walk starts at 0 but might not get back to 0 at the end of the gene list.</li>
 </ul>
@@ -709,7 +709,7 @@ D_g = \sum_{i=0}^{n}{X_i}
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
